@@ -21,7 +21,7 @@ services:
       ENABLE_MODULES: ''
       CLUSTER_HOSTNAME: 'node1'
     volumes:
-      - ./data/weaviate:/var/lib/weaviate
+      - weaviate_data:/var/lib/weaviate
   prometheus:
     image: prom/prometheus:v2.36.2
     volumes:
@@ -43,3 +43,6 @@ services:
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/prometheus.yml
       - ./grafana/dashboard_provider.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
       - ./grafana/dashboards:/var/lib/grafana/dashboards
+
+volumes:
+  weaviate_data:
